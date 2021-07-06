@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { ApiService } from "./api.service";
+import { AuthService } from "./auth.service";
 import { FormBuilder, Validators } from "@angular/forms";
 import { Inject } from "@angular/core";
 import { Subject } from "rxjs";
@@ -12,7 +12,7 @@ export class RegisterComponent {
     
     form: any
 
-    constructor(private api: ApiService, private fb: FormBuilder) { 
+    constructor(public auth: AuthService, private fb: FormBuilder) { 
         this.form = fb.group({
             cpf: ['', Validators.required],
             name: ['', Validators.required],
@@ -28,7 +28,7 @@ export class RegisterComponent {
 
     }
 
-    register() {
+    register(registry: any) {
         console.log(this.form)
     }
 

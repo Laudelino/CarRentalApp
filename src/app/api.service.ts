@@ -12,6 +12,7 @@ export class ApiService {
     postSimulation(reserveSimulation: any) {
         this.http.post('https://apicarrental.azurewebsites.net/api/reservations/simulation', reserveSimulation).subscribe( res => {
             console.log(res)
+            
         })
     }
 
