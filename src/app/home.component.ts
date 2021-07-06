@@ -3,9 +3,8 @@ import { VehiclesComponent } from './vehicles.component';
 import { SimulationComponent } from './simulation.component';
 
 @Component({
-  selector: 'app-root',
-  template: '<nav></nav><router-outlet></router-outlet>',
+  template: '<simulation></simulation>',
 })
-export class AppComponent {
-  title = 'Aluguel de Carros';
+export class HomeComponent {
+  
 }
