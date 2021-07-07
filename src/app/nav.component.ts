@@ -4,7 +4,7 @@ import { AuthService } from './auth.service';
 @Component({
   selector: 'nav',
   template: `
-    <mat-toolbar>
+    <mat-toolbar color="primary">
         <button mat-button routerLink="/">Inicio</button>
         <button *ngIf="auth.isAuthenticated" mat-button routerLink="/history">Minhas Reservas</button>
         <span style="flex: 1 1 auto;"></span>

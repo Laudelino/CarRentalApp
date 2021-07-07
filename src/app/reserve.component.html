@@ -30,9 +30,9 @@
         <p *ngIf="modelsService.isSimulated"><b><span> Total Estimado: {{ modelsService.simulationResult.estimatedTotal | currency: "BRL" }}</span></b></p>
     </mat-card-content>
     <mat-card-actions>
-        <button (click)="simulate(modelsService.selectedModel.id, dateRangeStart, dateRangeEnd)" mat-button *ngIf="!modelsService.isSimulated">Simular</button>
-        <button (click)="reserve(modelsService.selectedModel.id, dateRangeStart, dateRangeEnd)" mat-button *ngIf="auth.isAuthenticated && modelsService.isSimulated" >Reservar</button>
-        <button mat-button *ngIf="!auth.isAuthenticated && modelsService.isSimulated" routerLink="/login">Entrar</button>
+        <button (click)="simulate(modelsService.selectedModel.id, dateRangeStart, dateRangeEnd)" mat-button *ngIf="!modelsService.isSimulated" color="primary">Simular</button>
+        <button (click)="reserve(modelsService.selectedModel.id, dateRangeStart, dateRangeEnd)" mat-button *ngIf="auth.isAuthenticated && modelsService.isSimulated" color="primary">Reservar</button>
+        <button mat-button *ngIf="!auth.isAuthenticated && modelsService.isSimulated" routerLink="/login" color="primary">Entrar</button>
     </mat-card-actions>
 </mat-card>
 
