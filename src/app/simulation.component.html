@@ -49,8 +49,8 @@
       <p><span> Combultivel: {{ resultFuelTypeName }} </span></p>
       <p><span> Categoria: {{ resultCategory }} </span></p>
       <p><span> Retirada: {{ resultreservationStart }} </span> <span> Devolução: {{ resultreservationEnd }} </span></p>
-      <p><span> Valor Hora: R${{ resultrentalRate | number: '1.2-2' }}</span></p>
-      <p><span> Total Estimado: R${{ resultestimatedTotal | number: '1.2-2' }}</span></p>
+      <p><span> Valor Hora: {{ resultrentalRate | currency: "BRL" }}</span></p>
+      <p><span> Total Estimado: {{ resultestimatedTotal | currency: "BRL" }}</span></p>
     </mat-card-content>
     <mat-card-actions>
       <button mat-button *ngIf="auth.isAuthenticated">Reservar</button>

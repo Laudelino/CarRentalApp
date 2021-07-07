@@ -11,6 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatListModule} from '@angular/material/list';
 import {MatSelectModule} from '@angular/material/select';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
@@ -18,6 +19,7 @@ import { AppComponent } from './app.component';
 
 import { ApiService } from './api.service';
 import { AuthService } from './auth.service';
+import { ReservationService } from './reservation.service';
 
 import { HomeComponent } from './home.component';
 import { NavComponent } from './nav.component';
@@ -26,13 +28,15 @@ import { SimulationComponent } from './simulation.component';
 import { RegisterComponent } from './register.component';
 import { LoginComponent } from './login.component';
 import { AuthInterceptor } from './auth.interceptor';
+import { CustomerHistory } from './customerHistory.component';
 
 const routes = [
   { path: '', component: HomeComponent },
   { path: 'simulation', component: SimulationComponent },
   { path: 'vehicles', component: VehiclesComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'login', component: LoginComponent }
+  { path: 'login', component: LoginComponent },
+  { path: 'history', component: CustomerHistory }
 ]
 
 @NgModule({
@@ -43,7 +47,8 @@ const routes = [
     HomeComponent,
     NavComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    CustomerHistory
   ],
   imports: [
     BrowserModule,
@@ -60,11 +65,13 @@ const routes = [
     MatListModule,
     MatSelectModule,
     MatToolbarModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatExpansionModule
   ],
   providers: [
     ApiService,
     AuthService,
+    ReservationService,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]

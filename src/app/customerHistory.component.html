@@ -1,0 +1,16 @@
+<mat-accordion >
+    <mat-expansion-panel hideToggle *ngFor="let r of reservationService.reservations">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{ r.vehicle.vehicleModel.manufacturer.name }} {{ r.vehicle.vehicleModel.name }} {{ r.vehicle.plate }}
+        </mat-panel-title>
+        <mat-panel-description style="flex: 1 1 auto;">
+            {{ r.status }}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <p><b>Retirada:</b> {{r.reservationStart | date}} <span *ngIf="r.status=='Completed'"><b>Devolução: </b> {{ r.returnDate | date}}</span> <span *ngIf="r.status!='Completed'"><b>Devolução:</b> {{ r.reservationEnd  | date }}</span></p>
+      <p><b>Valor Hora:</b> {{r.rentalRate | currency: ("BRL") }} <span *ngIf="r.status=='Completed'"><b>Total:</b> {{ r.returnTotal | currency: ("BRL") }}</span> <span *ngIf="r.status!='Completed'"><b>Total Estimado:</b> {{ r.estimatedTotal | currency: ("BRL") }}</span></p>
+      <p *ngIf="r.status=='Completed'"><b>Check-in: Veiculo Limpo</b> {{r.isClean}} <b>Riscos</b> {{r.hasScratches}} <b>Amassados</b> {{ r.hasDents }} <b>Tanque Cheio</b> {{ r.hasFullTank }} </p>
+    </mat-expansion-panel>
+  </mat-accordion>
+  
