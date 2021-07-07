@@ -20,6 +20,7 @@ import { AppComponent } from './app.component';
 import { ApiService } from './api.service';
 import { AuthService } from './auth.service';
 import { ReservationService } from './reservation.service';
+import { AvailableModelsService } from './availableModels.service';
 
 import { HomeComponent } from './home.component';
 import { NavComponent } from './nav.component';
@@ -29,6 +30,8 @@ import { RegisterComponent } from './register.component';
 import { LoginComponent } from './login.component';
 import { AuthInterceptor } from './auth.interceptor';
 import { CustomerHistory } from './customerHistory.component';
+import { AvailableModels } from './availableModels.component';
+import { ReserveComponent } from './reserve.component';
 
 const routes = [
   { path: '', component: HomeComponent },
@@ -36,7 +39,9 @@ const routes = [
   { path: 'vehicles', component: VehiclesComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'history', component: CustomerHistory }
+  { path: 'history', component: CustomerHistory },
+  { path: 'availablemodels', component: AvailableModels },
+  { path: 'reserve/:modelId', component: ReserveComponent }
 ]
 
 @NgModule({
@@ -48,7 +53,9 @@ const routes = [
     NavComponent,
     RegisterComponent,
     LoginComponent,
-    CustomerHistory
+    CustomerHistory,
+    AvailableModels,
+    ReserveComponent
   ],
   imports: [
     BrowserModule,
@@ -72,6 +79,7 @@ const routes = [
     ApiService,
     AuthService,
     ReservationService,
+    AvailableModelsService,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]

@@ -47,3 +47,23 @@ export class Reservation {
     status: string;
     vehicle: Vehicle;
 }
+
+export class ReserveSimulation{
+    modelId: string;
+    reservationStart: Date;
+    reservationEnd: Date;
+    rentalRate: number;
+    estimatedTotal:number
+  }
+
+export class ReserveRequest {
+    modelId: number;
+    customerCPF: string;
+    reservationStart: Date;
+    reservationEnd: Date;
+    rentalRate: number;
+    estimatedTotal: number;
+}
+
+
+

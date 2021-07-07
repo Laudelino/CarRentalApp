@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
-import { VehiclesComponent } from './vehicles.component';
-import { SimulationComponent } from './simulation.component';
+import { AvailableModels } from './availableModels.component';
 
 @Component({
-  template: '<simulation></simulation>',
+  template: '<availablemodels></availablemodels>',
 })
 export class HomeComponent {
   

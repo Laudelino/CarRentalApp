@@ -13,8 +13,8 @@ export class ReservationService {
 
     public reservations: Reservation[] = [];
 
-    loadReservations(): Observable<void> {
-        return this.http.get<[]>("https://apicarrental.azurewebsites.net/api/reservations/customer/12345678999")
+    loadReservations(cpf: any): Observable<void> {
+        return this.http.get<[]>(`https://apicarrental.azurewebsites.net/api/reservations/customer/${cpf}`)
         .pipe(map(data => {
             this.reservations = data;
             return;

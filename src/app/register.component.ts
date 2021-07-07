@@ -28,8 +28,4 @@ export class RegisterComponent {
 
     }
 
-    register(registry: any) {
-        console.log(this.form)
-    }
-
 }

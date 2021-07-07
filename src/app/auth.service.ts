@@ -28,9 +28,9 @@ export class AuthService {
     }
 
     register(registry: any) {
-        this.http.post('https://apicarrental.azurewebsites.net/api/customer', registry).subscribe( res => {
-            console.log(res)
-        })
+        this.http.post('https://apicarrental.azurewebsites.net/api/customer', registry)
+        .subscribe()
+        this.router.navigate(['/login'])
     }
 
     login(credentials: any) {

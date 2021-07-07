@@ -1,4 +1,3 @@
-import { templateJitUrl } from "@angular/compiler";
 import { Component, Inject, Injectable, OnInit } from "@angular/core";
 import { ReservationService } from "./reservation.service";
 
@@ -8,14 +7,15 @@ import { ReservationService } from "./reservation.service";
 })
 
 export class CustomerHistory implements OnInit {
-
     
+   
     constructor(public reservationService: ReservationService) { 
     
     }
 
     ngOnInit(): void {
-        this.reservationService.loadReservations()
+        var cpf = localStorage.getItem('cpf')
+        this.reservationService.loadReservations(cpf)
         .subscribe()
     }
 }
