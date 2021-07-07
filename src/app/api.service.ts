@@ -1,19 +1,19 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 import { Subject } from "rxjs";
+import { ReserveSimulation } from "./ReserveSimulationInterface";
+import { VehicleModel } from "./vehiclemodel.models";
 
 @Injectable()
 export class ApiService {
     
-    private selectedCategory = new Subject<any>();
-    categorySelected = this.selectedCategory.asObservable();
-
     constructor (private http: HttpClient) {}
     postSimulation(reserveSimulation: any) {
-        this.http.post('https://apicarrental.azurewebsites.net/api/reservations/simulation', reserveSimulation).subscribe( res => {
+        return this.http.post<ReserveSimulation>('https://apicarrental.azurewebsites.net/api/reservations/simulation', reserveSimulation)
+        /*.subscribe( res => {
             console.log(res)
             
-        })
+        })*/
     }
 
     getCategories() {
@@ -21,10 +21,10 @@ export class ApiService {
     }
 
     getModelsByCategory(categoryId: any) {
-        return this.http.get('https://apicarrental.azurewebsites.net/api/models')
+        return this.http.get(`https://apicarrental.azurewebsites.net/api/vehiclecategories/${categoryId}/models`)
+    }
+    getModelDetails(modelId: any) {
+        return this.http.get<VehicleModel>(`https://apicarrental.azurewebsites.net/api/models/${modelId}`)
     }
 
-    selectCategory(category: any) {
-        this.selectedCategory.next(category)
-    }
 }

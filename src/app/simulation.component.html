@@ -3,11 +3,10 @@
         <mat-card-title>Simular uma reserva</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-        <form>    
-                          
+        <form>            
             <mat-form-field appearance="fill">
                 <mat-label>Categoria</mat-label>
-                <mat-select required>
+                <mat-select (selectionChange)="selectCategoryChangeHandler($event)" required>
                     <mat-option *ngFor="let cat of categories" [value]="cat.id">
                       {{cat.name}}
                     </mat-option> 
@@ -15,8 +14,8 @@
             </mat-form-field> 
             <mat-form-field appearance="fill">
                 <mat-label>Modelo</mat-label>
-                <mat-select required>
-                    <mat-option *ngFor="let model of models" [value]="model.id">
+                <mat-select required #vehicleModel> 
+                    <mat-option *ngFor="let model of models" [value]="model.id" >
                         {{model.manufacturer.name}} {{model.name}}
                     </mat-option> 
                 </mat-select>
@@ -38,7 +37,25 @@
         </form>
     </mat-card-content>
     <mat-card-actions>
-        <button (click)="simulate(1, dateRangeStart, dateRangeEnd)" mat-button>Continuar</button>
+        <button (click)="simulate(vehicleModel.value, dateRangeStart, dateRangeEnd)" mat-button>Continuar</button>
     </mat-card-actions>
 </mat-card>
+<mat-card *ngIf="isSimulated">
+    <mat-card-header>
+      <mat-card-title>Sua simulação de reserva</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p><span> Modelo: {{ resultManufacturerName }} {{ resultModelName }}</span></p>
+      <p><span> Combultivel: {{ resultFuelTypeName }} </span></p>
+      <p><span> Categoria: {{ resultCategory }} </span></p>
+      <p><span> Retirada: {{ resultreservationStart }} </span> <span> Devolução: {{ resultreservationEnd }} </span></p>
+      <p><span> Valor Hora: R${{ resultrentalRate | number: '1.2-2' }}</span></p>
+      <p><span> Total Estimado: R${{ resultestimatedTotal | number: '1.2-2' }}</span></p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button *ngIf="auth.isAuthenticated">Reservar</button>
+      <button mat-button *ngIf="!auth.isAuthenticated">Entrar e Reservar</button>
+    </mat-card-actions>
+  </mat-card>
+
   

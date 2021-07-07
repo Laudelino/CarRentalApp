@@ -7,6 +7,7 @@ import { AuthService } from './auth.service';
     <mat-toolbar>
         <button mat-button routerLink="/">Inicio</button>
         <button mat-button routerLink="/simulation">Simular Reserva</button>
+        <button *ngIf="auth.isAuthenticated" mat-button routerLink="/history">Histórico</button>
         <span style="flex: 1 1 auto;"></span>
         <button *ngIf="!auth.isAuthenticated" mat-button routerLink="/register">Cadastrar</button>
         <button *ngIf="!auth.isAuthenticated" mat-button routerLink="/login">Entrar</button>
